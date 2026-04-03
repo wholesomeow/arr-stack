@@ -1,0 +1,15 @@
+---
+services:
+{% include 'templates/sonarr/docker-config.yml.j2' %}
+{% include 'templates/jellyfin/docker-config.yml.j2' %}
+
+###############################################
+# ARR Stack Dedicated Network
+###############################################
+
+networks:
+  default:
+    name: arr_network
+
+###############################################
+###############################################

@@ -1,0 +1,14 @@
+###############################################
+# JELLYFIN - Media Server
+###############################################
+
+  jellyfin:
+    container_name: {{ inventory.parameters[target].docker.container_name }}
+    image: {{ inventory.parameters[target].docker.image }}
+    ports:
+      - {{ inventory.parameters[target].docker.local_port }}:{{ inventory.parameters[target].docker.container_port }}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - { inventory.parameters[target].docker.local_init_path }}:/config-init/init.sh:ro
+      - {{ inventory.parameters[target].docker.local_config_path }}:/config
+      - {{ inventory.parameters[target].docker.local_data_path }}:/data

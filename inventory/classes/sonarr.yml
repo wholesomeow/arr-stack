@@ -1,0 +1,31 @@
+---
+classes:
+  - common
+
+parameters:
+  sonarr:
+    server:
+      port: 8989
+      url_base: ""
+      log_level: ${arr_common:log_level}
+      api_key: ${secrets:sonarr:api_key}
+      ssl_port: 9898
+      ssl_enable: "False"
+      ssl_cert_path: ""
+      ssl_cert_password: ""
+      branch: main
+      bind_address: "*"
+      launch_browser: "True"
+      admin_username: "admin"
+      admin_password: ${secrets:sonarr:admin_password}
+      authentication_method: ${arr_common:authentication_method}
+      authentication_required: ${arr_common:authentication_required}
+      instance_name: Sonarr
+      update_mechanism: ${arr_common:update_mechanism}
+    docker:
+      container_name: sonarr
+      image: ghcr.io/hotio/sonarr:latest
+      local_port: 8989
+      container_port: 8989
+      local_config_path: ${arr_common:config_path}/sonarr
+      local_data_path: ${arr_common:config_path}

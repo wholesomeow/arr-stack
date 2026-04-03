@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Config>
+  <BindAddress>{{ inventory.parameters[target].bind_address }}</BindAddress>
+  <Port>{{ inventory.parameters[target].port }}</Port>
+  <SslPort>{{ inventory.parameters[target].ssl_port }}</SslPort>
+  <EnableSsl>{{ inventory.parameters[target].ssl_enable }}</EnableSsl>
+  <LaunchBrowser>{{ inventory.parameters[target].launch_browser }}</LaunchBrowser>
+  <ApiKey>{{ inventory.parameters[target].api_key }}</ApiKey>
+  <AuthenticationMethod>{{ inventory.parameters[target].authentication_method }}</AuthenticationMethod>
+  <AuthenticationRequired>{{ inventory.parameters[target].authentication_required }}</AuthenticationRequired>
+  <Branch>{{ inventory.parameters[target].branch }}</Branch>
+  <LogLevel>{{ inventory.parameters[target].log_level }}</LogLevel>
+  <SslCertPath>{{ inventory.parameters[target].ssl_cert_path }}</SslCertPath>
+  <SslCertPassword>{{ inventory.parameters[target].ssl_cert_password }}</SslCertPassword>
+  <UrlBase>{{ inventory.parameters[target].url_base }}</UrlBase>
+  <InstanceName>{{ inventory.parameters[target].instance_name }}</InstanceName>
+  <UpdateMechanism>{{ inventory.parameters[target].update_mechanism }}</UpdateMechanism>
+</Config>

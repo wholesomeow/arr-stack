@@ -1,0 +1,249 @@
+---
+classes:
+  - common
+
+parameters:
+  jellyfin:
+    docker:
+      container_name: jellyfin
+      image: ghcr.io/hotio/jellyfin:latest
+      entrypoint: ["/bin/sh", "/config-init/init.sh"]
+      local_init_path: ./jellyfin/init.sh
+      local_config_path: ~/arr-stack/config/jellyfin
+      local_data_path: /mnt/e/arr-stack/media
+      local_port: 8096
+      container_port: 8096
+    server:
+      LogFileRetentionDays: 3
+      IsStartupWizardCompleted: "True"
+      EnableMetrics: "False"
+      EnableNormalizedItemByNameIds: "True"
+      IsPortAuthorized: "True"
+      QuickConnectAvailable: "True"
+      EnableCaseSensitiveItemIds: "True"
+      DisableLiveTvChannelUserDataName: "True"
+      MetadataPath: ""
+      PreferredMetadataLanguage: en
+      MetadataCountryCode: US
+      SortReplaceCharacters:
+        string:
+          - .
+          - +
+          - '%'
+      SortRemoveCharacters:
+        string:
+          - ','
+          - '&'
+          - '-'
+          - '{'
+          - '}'
+          - ''''
+      SortRemoveWords:
+        string:
+          - the
+          - a
+          - an
+      MinResumePct: '5'
+      MaxResumePct: '90'
+      MinResumeDurationSeconds: '300'
+      MinAudiobookResume: '5'
+      MaxAudiobookResume: '5'
+      InactiveSessionThreshold: '0'
+      LibraryMonitorDelay: '60'
+      LibraryUpdateDuration: '30'
+      CacheSize: '2400'
+      ImageSavingConvention: Legacy
+      MetadataOptions:
+        MetadataOptions:
+          - ItemType: Book
+            DisabledMetadataSavers: ""
+            LocalMetadataReaderOrder: ""
+            DisabledMetadataFetchers: ""
+            MetadataFetcherOrder: ""
+            DisabledImageFetchers: ""
+            ImageFetcherOrder: ""
+          - ItemType: Movie
+            DisabledMetadataSavers: ""
+            LocalMetadataReaderOrder: ""
+            DisabledMetadataFetchers: ""
+            MetadataFetcherOrder: ""
+            DisabledImageFetchers: ""
+            ImageFetcherOrder: ""
+          - ItemType: MusicVideo
+            DisabledMetadataSavers: ""
+            LocalMetadataReaderOrder: ""
+            DisabledMetadataFetchers:
+              string: The Open Movie Database
+            MetadataFetcherOrder: ""
+            DisabledImageFetchers:
+              string: The Open Movie Database
+            ImageFetcherOrder: ""
+          - ItemType: Series
+            DisabledMetadataSavers: ""
+            LocalMetadataReaderOrder: ""
+            DisabledMetadataFetchers: ""
+            MetadataFetcherOrder: ""
+            DisabledImageFetchers: ""
+            ImageFetcherOrder: ""
+          - ItemType: MusicAlbum
+            DisabledMetadataSavers: ""
+            LocalMetadataReaderOrder: ""
+            DisabledMetadataFetchers:
+              string: TheAudioDB
+            MetadataFetcherOrder: ""
+            DisabledImageFetchers: ""
+            ImageFetcherOrder: ""
+          - ItemType: MusicArtist
+            DisabledMetadataSavers: ""
+            LocalMetadataReaderOrder: ""
+            DisabledMetadataFetchers:
+              string: TheAudioDB
+            MetadataFetcherOrder: ""
+            DisabledImageFetchers: ""
+            ImageFetcherOrder: ""
+          - ItemType: BoxSet
+            DisabledMetadataSavers: ""
+            LocalMetadataReaderOrder: ""
+            DisabledMetadataFetchers: ""
+            MetadataFetcherOrder: ""
+            DisabledImageFetchers: ""
+            ImageFetcherOrder: ""
+          - ItemType: Season
+            DisabledMetadataSavers: ""
+            LocalMetadataReaderOrder: ""
+            DisabledMetadataFetchers: ""
+            MetadataFetcherOrder: ""
+            DisabledImageFetchers: ""
+            ImageFetcherOrder: ""
+          - ItemType: Episode
+            DisabledMetadataSavers: ""
+            LocalMetadataReaderOrder: ""
+            DisabledMetadataFetchers: ""
+            MetadataFetcherOrder: ""
+            DisabledImageFetchers: ""
+            ImageFetcherOrder: ""
+      SkipDeserializationForBasicTypes: "True"
+      ServerName: jellyfin
+      UICulture: en-US
+      SaveMetadataHidden: "False"
+      ContentTypes: ""
+      RemoteClientBitrateLimit: '0'
+      EnableFolderView: "False"
+      EnableGroupingMoviesIntoCollections: "False"
+      EnableGroupingShowsIntoCollections: "False"
+      DisplaySpecialsWithinSeasons: "True"
+      CodecsUsed: ""
+      PluginRepositories:
+        RepositoryInfo:
+          Name: Jellyfin Stable
+          Url: 'https://repo.jellyfin.org/files/plugin/manifest.json'
+          Enabled: "True"
+      EnableExternalContentInSuggestions: "True"
+      ImageExtractionTimeoutMs: '0'
+      PathSubstitutions: ""
+      EnableSlowResponseWarning: "True"
+      SlowResponseThresholdMs: '500'
+      CorsHosts:
+        string: '*'
+      ActivityLogRetentionDays: '30'
+      LibraryScanFanoutConcurrency: '0'
+      LibraryMetadataRefreshConcurrency: '0'
+      AllowClientLogUpload: "True"
+      DummyChapterDuration: '0'
+      ChapterImageResolution: MatchSource
+      ParallelImageEncodingLimit: '0'
+      CastReceiverApplications:
+        CastReceiverApplication:
+          - Id: F007D354
+            Name: Stable
+          - Id: 6F511C87
+            Name: Unstable
+      TrickplayOptions:
+        EnableHwAcceleration: "False"
+        EnableHwEncoding: "False"
+        EnableKeyFrameOnlyExtraction: "False"
+        ScanBehavior: NonBlocking
+        ProcessPriority: BelowNormal
+        Interval: '10000'
+        WidthResolutions:
+          int: '320'
+        TileWidth: '10'
+        TileHeight: '10'
+        Qscale: '4'
+        JpegQuality: '90'
+        ProcessThreads: '1'
+      EnableLegacyAuthorization: "True"
+    network:
+      BaseUrl: ''
+      EnableHttps: 'false'
+      RequireHttps: 'false'
+      CertificatePath: ''
+      CertificatePassword: ''
+      InternalHttpPort: '8096'
+      InternalHttpsPort: '8920'
+      PublicHttpPort: '8096'
+      PublicHttpsPort: '8920'
+      AutoDiscovery: 'true'
+      EnableIPv4: 'true'
+      EnableIPv6: 'false'
+      EnableRemoteAccess: 'true'
+      LocalNetworkSubnets: ''
+      LocalNetworkAddresses: ''
+      KnownProxies: ''
+      IgnoreVirtualInterfaces: 'true'
+      VirtualInterfaceNames:
+        string: veth
+      EnablePublishedServerUriByRequest: 'false'
+      PublishedServerUriBySubnet: ''
+      RemoteIPFilter: ''
+      IsRemoteIPFilterBlacklist: 'false'
+    encoding:
+      EncodingThreadCount: '-1'
+      EnableFallbackFont: 'false'
+      EnableAudioVbr: 'false'
+      DownMixAudioBoost: '2'
+      DownMixStereoAlgorithm: None
+      MaxMuxingQueueSize: '2048'
+      EnableThrottling: 'false'
+      ThrottleDelaySeconds: '180'
+      EnableSegmentDeletion: 'false'
+      SegmentKeepSeconds: '720'
+      HardwareAccelerationType: none
+      EncoderAppPathDisplay: /usr/lib/jellyfin-ffmpeg/ffmpeg
+      VaapiDevice: /dev/dri/renderD128
+      QsvDevice: ''
+      EnableTonemapping: 'false'
+      EnableVppTonemapping: 'false'
+      EnableVideoToolboxTonemapping: 'false'
+      TonemappingAlgorithm: bt2390
+      TonemappingMode: auto
+      TonemappingRange: auto
+      TonemappingDesat: '0'
+      TonemappingPeak: '100'
+      TonemappingParam: '0'
+      VppTonemappingBrightness: '16'
+      VppTonemappingContrast: '1'
+      H264Crf: '23'
+      H265Crf: '28'
+      EncoderPreset:
+        '_xsi:nil': 'true'
+      DeinterlaceDoubleRate: 'false'
+      DeinterlaceMethod: yadif
+      EnableDecodingColorDepth10Hevc: 'true'
+      EnableDecodingColorDepth10Vp9: 'true'
+      EnableDecodingColorDepth10HevcRext: 'false'
+      EnableDecodingColorDepth12HevcRext: 'false'
+      EnableEnhancedNvdecDecoder: 'true'
+      PreferSystemNativeHwDecoder: 'true'
+      EnableIntelLowPowerH264HwEncoder: 'false'
+      EnableIntelLowPowerHevcHwEncoder: 'false'
+      EnableHardwareEncoding: 'true'
+      AllowHevcEncoding: 'false'
+      AllowAv1Encoding: 'false'
+      EnableSubtitleExtraction: 'true'
+      HardwareDecodingCodecs:
+        string:
+          - h264
+          - vc1
+      AllowOnDemandMetadataBasedKeyframeExtractionForExtensions:
+        string: mkv

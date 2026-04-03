@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NetworkConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  {% if inventory.parameters.jellyfin.network.BaseUrl %}
+  <BaseUrl>{{ inventory.parameters.jellyfin.network.BaseUrl }}</BaseUrl>
+  {% else %}
+  <BaseUrl />
+  {% endif %}
+  <EnableHttps>{{ inventory.parameters.jellyfin.network.EnableHttps }}</EnableHttps>
+  <RequireHttps>{{ inventory.parameters.jellyfin.network.RequireHttps }}</RequireHttps>
+  {% if inventory.parameters.jellyfin.network.CertificatePath %}
+  <CertificatePath>{{ inventory.parameters.jellyfin.network.CertificatePath }}</CertificatePath>
+  {% else %}
+  <CertificatePath />
+  {% endif %}
+  {% if inventory.parameters.jellyfin.network.CertificatePassword %}
+  <CertificatePassword>{{ inventory.parameters.jellyfin.network.CertificatePassword }}</CertificatePassword>
+  {% else %}
+  <CertificatePassword />
+  {% endif %}
+  <InternalHttpPort>{{ inventory.parameters.jellyfin.network.InternalHttpPort }}</InternalHttpPort>
+  <InternalHttpsPort>{{ inventory.parameters.jellyfin.network.InternalHttpsPort }}</InternalHttpsPort>
+  <PublicHttpPort>{{ inventory.parameters.jellyfin.network.PublicHttpPort }}</PublicHttpPort>
+  <PublicHttpsPort>{{ inventory.parameters.jellyfin.network.PublicHttpsPort }}</PublicHttpsPort>
+  <AutoDiscovery>{{ inventory.parameters.jellyfin.network.AutoDiscovery }}</AutoDiscovery>
+  <EnableIPv4>{{ inventory.parameters.jellyfin.network.EnableIPv4 }}</EnableIPv4>
+  <EnableIPv6>{{ inventory.parameters.jellyfin.network.EnableIPv6 }}</EnableIPv6>
+  <EnableRemoteAccess>{{ inventory.parameters.jellyfin.network.EnableRemoteAccess }}</EnableRemoteAccess>
+  {% if inventory.parameters.jellyfin.network.LocalNetworkSubnets %}
+  <LocalNetworkSubnets>{{ inventory.parameters.jellyfin.network.LocalNetworkSubnets }}</LocalNetworkSubnets>
+  {% else %}
+  <LocalNetworkSubnets />
+  {% endif %}
+  {% if inventory.parameters.jellyfin.network.LocalNetworkAddresses %}
+  <LocalNetworkAddresses>{{ inventory.parameters.jellyfin.network.LocalNetworkAddresses }}</LocalNetworkAddresses>
+  {% else %}
+  <LocalNetworkAddresses />
+  {% endif %}
+  {% if inventory.parameters.jellyfin.network.KnownProxies %}
+  <KnownProxies>{{ inventory.parameters.jellyfin.network.KnownProxies }}</KnownProxies>
+  {% else %}
+  <KnownProxies />
+  {% endif %}
+  <IgnoreVirtualInterfaces>{{ inventory.parameters.jellyfin.network.IgnoreVirtualInterfaces }}</IgnoreVirtualInterfaces>
+  <VirtualInterfaceNames>
+    {% set vnames = inventory.parameters.jellyfin.network.VirtualInterfaceNames.string %}
+    {% if vnames is string %}
+    <string>{{ vnames }}</string>
+    {% else %}
+    {% for name in vnames %}
+    <string>{{ name }}</string>
+    {% endfor %}
+    {% endif %}
+  </VirtualInterfaceNames>
+  <EnablePublishedServerUriByRequest>{{ inventory.parameters.jellyfin.network.EnablePublishedServerUriByRequest }}</EnablePublishedServerUriByRequest>
+  {% if inventory.parameters.jellyfin.network.PublishedServerUriBySubnet %}
+  <PublishedServerUriBySubnet>{{ inventory.parameters.jellyfin.network.PublishedServerUriBySubnet }}</PublishedServerUriBySubnet>
+  {% else %}
+  <PublishedServerUriBySubnet />
+  {% endif %}
+  {% if inventory.parameters.jellyfin.network.RemoteIPFilter %}
+  <RemoteIPFilter>{{ inventory.parameters.jellyfin.network.RemoteIPFilter }}</RemoteIPFilter>
+  {% else %}
+  <RemoteIPFilter />
+  {% endif %}
+  <IsRemoteIPFilterBlacklist>{{ inventory.parameters.jellyfin.network.IsRemoteIPFilterBlacklist }}</IsRemoteIPFilterBlacklist>
+</NetworkConfiguration>

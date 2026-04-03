@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EncodingOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <EncodingThreadCount>{{ inventory.parameters.jellyfin.encoding.EncodingThreadCount }}</EncodingThreadCount>
+  <EnableFallbackFont>{{ inventory.parameters.jellyfin.encoding.EnableFallbackFont }}</EnableFallbackFont>
+  <EnableAudioVbr>{{ inventory.parameters.jellyfin.encoding.EnableAudioVbr }}</EnableAudioVbr>
+  <DownMixAudioBoost>{{ inventory.parameters.jellyfin.encoding.DownMixAudioBoost }}</DownMixAudioBoost>
+  <DownMixStereoAlgorithm>{{ inventory.parameters.jellyfin.encoding.DownMixStereoAlgorithm }}</DownMixStereoAlgorithm>
+  <MaxMuxingQueueSize>{{ inventory.parameters.jellyfin.encoding.MaxMuxingQueueSize }}</MaxMuxingQueueSize>
+  <EnableThrottling>{{ inventory.parameters.jellyfin.encoding.EnableThrottling }}</EnableThrottling>
+  <ThrottleDelaySeconds>{{ inventory.parameters.jellyfin.encoding.ThrottleDelaySeconds }}</ThrottleDelaySeconds>
+  <EnableSegmentDeletion>{{ inventory.parameters.jellyfin.encoding.EnableSegmentDeletion }}</EnableSegmentDeletion>
+  <SegmentKeepSeconds>{{ inventory.parameters.jellyfin.encoding.SegmentKeepSeconds }}</SegmentKeepSeconds>
+  <HardwareAccelerationType>{{ inventory.parameters.jellyfin.encoding.HardwareAccelerationType }}</HardwareAccelerationType>
+  <EncoderAppPathDisplay>{{ inventory.parameters.jellyfin.encoding.EncoderAppPathDisplay }}</EncoderAppPathDisplay>
+  <VaapiDevice>{{ inventory.parameters.jellyfin.encoding.VaapiDevice }}</VaapiDevice>
+  {% if inventory.parameters.jellyfin.encoding.QsvDevice %}
+  <QsvDevice>{{ inventory.parameters.jellyfin.encoding.QsvDevice }}</QsvDevice>
+  {% else %}
+  <QsvDevice />
+  {% endif %}
+  <EnableTonemapping>{{ inventory.parameters.jellyfin.encoding.EnableTonemapping }}</EnableTonemapping>
+  <EnableVppTonemapping>{{ inventory.parameters.jellyfin.encoding.EnableVppTonemapping }}</EnableVppTonemapping>
+  <EnableVideoToolboxTonemapping>{{ inventory.parameters.jellyfin.encoding.EnableVideoToolboxTonemapping }}</EnableVideoToolboxTonemapping>
+  <TonemappingAlgorithm>{{ inventory.parameters.jellyfin.encoding.TonemappingAlgorithm }}</TonemappingAlgorithm>
+  <TonemappingMode>{{ inventory.parameters.jellyfin.encoding.TonemappingMode }}</TonemappingMode>
+  <TonemappingRange>{{ inventory.parameters.jellyfin.encoding.TonemappingRange }}</TonemappingRange>
+  <TonemappingDesat>{{ inventory.parameters.jellyfin.encoding.TonemappingDesat }}</TonemappingDesat>
+  <TonemappingPeak>{{ inventory.parameters.jellyfin.encoding.TonemappingPeak }}</TonemappingPeak>
+  <TonemappingParam>{{ inventory.parameters.jellyfin.encoding.TonemappingParam }}</TonemappingParam>
+  <VppTonemappingBrightness>{{ inventory.parameters.jellyfin.encoding.VppTonemappingBrightness }}</VppTonemappingBrightness>
+  <VppTonemappingContrast>{{ inventory.parameters.jellyfin.encoding.VppTonemappingContrast }}</VppTonemappingContrast>
+  <H264Crf>{{ inventory.parameters.jellyfin.encoding.H264Crf }}</H264Crf>
+  <H265Crf>{{ inventory.parameters.jellyfin.encoding.H265Crf }}</H265Crf>
+  {% if inventory.parameters.jellyfin.encoding.EncoderPreset['_xsi:nil'] == 'true' %}
+  <EncoderPreset xsi:nil="true" />
+  {% else %}
+  <EncoderPreset>{{ inventory.parameters.jellyfin.encoding.EncoderPreset }}</EncoderPreset>
+  {% endif %}
+  <DeinterlaceDoubleRate>{{ inventory.parameters.jellyfin.encoding.DeinterlaceDoubleRate }}</DeinterlaceDoubleRate>
+  <DeinterlaceMethod>{{ inventory.parameters.jellyfin.encoding.DeinterlaceMethod }}</DeinterlaceMethod>
+  <EnableDecodingColorDepth10Hevc>{{ inventory.parameters.jellyfin.encoding.EnableDecodingColorDepth10Hevc }}</EnableDecodingColorDepth10Hevc>
+  <EnableDecodingColorDepth10Vp9>{{ inventory.parameters.jellyfin.encoding.EnableDecodingColorDepth10Vp9 }}</EnableDecodingColorDepth10Vp9>
+  <EnableDecodingColorDepth10HevcRext>{{ inventory.parameters.jellyfin.encoding.EnableDecodingColorDepth10HevcRext }}</EnableDecodingColorDepth10HevcRext>
+  <EnableDecodingColorDepth12HevcRext>{{ inventory.parameters.jellyfin.encoding.EnableDecodingColorDepth12HevcRext }}</EnableDecodingColorDepth12HevcRext>
+  <EnableEnhancedNvdecDecoder>{{ inventory.parameters.jellyfin.encoding.EnableEnhancedNvdecDecoder }}</EnableEnhancedNvdecDecoder>
+  <PreferSystemNativeHwDecoder>{{ inventory.parameters.jellyfin.encoding.PreferSystemNativeHwDecoder }}</PreferSystemNativeHwDecoder>
+  <EnableIntelLowPowerH264HwEncoder>{{ inventory.parameters.jellyfin.encoding.EnableIntelLowPowerH264HwEncoder }}</EnableIntelLowPowerH264HwEncoder>
+  <EnableIntelLowPowerHevcHwEncoder>{{ inventory.parameters.jellyfin.encoding.EnableIntelLowPowerHevcHwEncoder }}</EnableIntelLowPowerHevcHwEncoder>
+  <EnableHardwareEncoding>{{ inventory.parameters.jellyfin.encoding.EnableHardwareEncoding }}</EnableHardwareEncoding>
+  <AllowHevcEncoding>{{ inventory.parameters.jellyfin.encoding.AllowHevcEncoding }}</AllowHevcEncoding>
+  <AllowAv1Encoding>{{ inventory.parameters.jellyfin.encoding.AllowAv1Encoding }}</AllowAv1Encoding>
+  <EnableSubtitleExtraction>{{ inventory.parameters.jellyfin.encoding.EnableSubtitleExtraction }}</EnableSubtitleExtraction>
+  <HardwareDecodingCodecs>
+    {% for codec in inventory.parameters.jellyfin.encoding.HardwareDecodingCodecs.string %}
+    <string>{{ codec }}</string>
+    {% endfor %}
+  </HardwareDecodingCodecs>
+  <AllowOnDemandMetadataBasedKeyframeExtractionForExtensions>
+    {% for ext in inventory.parameters.jellyfin.encoding.AllowOnDemandMetadataBasedKeyframeExtractionForExtensions.string %}
+    <string>{{ ext }}</string>
+    {% endfor %}
+  </AllowOnDemandMetadataBasedKeyframeExtractionForExtensions>
+</EncodingOptions>

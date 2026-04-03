@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# init.sh - Runs before {{ inventory.parameters[target] }} starts
+#           Does some amount of initial configuration that I find important
+
+CONFIG_DIR=/config/config
+
+mkdir -p "$CONFIG_DIR"
+
+# Copy from templates found in git repo
+# only if config doesn't exist yet
+if [ ! -f "$CONFIG_DIR/system.xml"]; then
+    cp /config-init/system.xml "$CONFIG_DIR/system.xml"
+fi
+
+# Then we pass off to {{ inventory.parameters[target] }}'s real entrypoint
+exec /{{ inventory.parameters[target] }}/{{ inventory.parameters[target] }}

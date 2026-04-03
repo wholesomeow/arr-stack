@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServerConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <LogFileRetentionDays>{{ inventory.parameters.jellyfin.server.LogFileRetentionDays }}</LogFileRetentionDays>
+  <IsStartupWizardCompleted>{{ inventory.parameters.jellyfin.server.IsStartupWizardCompleted }}</IsStartupWizardCompleted>
+  <EnableMetrics>{{ inventory.parameters.jellyfin.server.EnableMetrics }}</EnableMetrics>
+  <EnableNormalizedItemByNameIds>{{ inventory.parameters.jellyfin.server.EnableNormalizedItemByNameIds }}</EnableNormalizedItemByNameIds>
+  <IsPortAuthorized>{{ inventory.parameters.jellyfin.server.IsPortAuthorized }}</IsPortAuthorized>
+  <QuickConnectAvailable>{{ inventory.parameters.jellyfin.server.QuickConnectAvailable }}</QuickConnectAvailable>
+  <EnableCaseSensitiveItemIds>{{ inventory.parameters.jellyfin.server.EnableCaseSensitiveItemIds }}</EnableCaseSensitiveItemIds>
+  <DisableLiveTvChannelUserDataName>{{ inventory.parameters.jellyfin.server.DisableLiveTvChannelUserDataName }}</DisableLiveTvChannelUserDataName>
+  {% if inventory.parameters.jellyfin.server.MetadataPath %}
+  <MetadataPath>{{ inventory.parameters.jellyfin.server.MetadataPath }}</MetadataPath>
+  {% else %}
+  <MetadataPath />
+  {% endif %}
+  <PreferredMetadataLanguage>{{ inventory.parameters.jellyfin.server.PreferredMetadataLanguage }}</PreferredMetadataLanguage>
+  <MetadataCountryCode>{{ inventory.parameters.jellyfin.server.MetadataCountryCode }}</MetadataCountryCode>
+  <SortReplaceCharacters>
+    {% for char in inventory.parameters.jellyfin.server.SortReplaceCharacters.string %}
+    <string>{{ char }}</string>
+    {% endfor %}
+  </SortReplaceCharacters>
+  <SortRemoveCharacters>
+    {% for char in inventory.parameters.jellyfin.server.SortRemoveCharacters.string %}
+    <string>{{ char | e }}</string>
+    {% endfor %}
+  </SortRemoveCharacters>
+  <SortRemoveWords>
+    {% for word in inventory.parameters.jellyfin.server.SortRemoveWords.string %}
+    <string>{{ word }}</string>
+    {% endfor %}
+  </SortRemoveWords>
+  <MinResumePct>{{ inventory.parameters.jellyfin.server.MinResumePct }}</MinResumePct>
+  <MaxResumePct>{{ inventory.parameters.jellyfin.server.MaxResumePct }}</MaxResumePct>
+  <MinResumeDurationSeconds>{{ inventory.parameters.jellyfin.server.MinResumeDurationSeconds }}</MinResumeDurationSeconds>
+  <MinAudiobookResume>{{ inventory.parameters.jellyfin.server.MinAudiobookResume }}</MinAudiobookResume>
+  <MaxAudiobookResume>{{ inventory.parameters.jellyfin.server.MaxAudiobookResume }}</MaxAudiobookResume>
+  <InactiveSessionThreshold>{{ inventory.parameters.jellyfin.server.InactiveSessionThreshold }}</InactiveSessionThreshold>
+  <LibraryMonitorDelay>{{ inventory.parameters.jellyfin.server.LibraryMonitorDelay }}</LibraryMonitorDelay>
+  <LibraryUpdateDuration>{{ inventory.parameters.jellyfin.server.LibraryUpdateDuration }}</LibraryUpdateDuration>
+  <CacheSize>{{ inventory.parameters.jellyfin.server.CacheSize }}</CacheSize>
+  <ImageSavingConvention>{{ inventory.parameters.jellyfin.server.ImageSavingConvention }}</ImageSavingConvention>
+  <MetadataOptions>
+    {% for opt in inventory.parameters.jellyfin.server.MetadataOptions.MetadataOptions %}
+    <MetadataOptions>
+      <ItemType>{{ opt.ItemType }}</ItemType>
+      {% if opt.DisabledMetadataSavers %}
+      <DisabledMetadataSavers>{{ opt.DisabledMetadataSavers }}</DisabledMetadataSavers>
+      {% else %}
+      <DisabledMetadataSavers />
+      {% endif %}
+      {% if opt.LocalMetadataReaderOrder %}
+      <LocalMetadataReaderOrder>{{ opt.LocalMetadataReaderOrder }}</LocalMetadataReaderOrder>
+      {% else %}
+      <LocalMetadataReaderOrder />
+      {% endif %}
+      {% if opt.DisabledMetadataFetchers and opt.DisabledMetadataFetchers.string is defined %}
+      <DisabledMetadataFetchers>
+        {% set fetchers = opt.DisabledMetadataFetchers.string %}
+        {% if fetchers is string %}
+        <string>{{ fetchers }}</string>
+        {% else %}
+        {% for f in fetchers %}<string>{{ f }}</string>{% endfor %}
+        {% endif %}
+      </DisabledMetadataFetchers>
+      {% else %}
+      <DisabledMetadataFetchers />
+      {% endif %}
+      {% if opt.MetadataFetcherOrder %}
+      <MetadataFetcherOrder>{{ opt.MetadataFetcherOrder }}</MetadataFetcherOrder>
+      {% else %}
+      <MetadataFetcherOrder />
+      {% endif %}
+      {% if opt.DisabledImageFetchers and opt.DisabledImageFetchers.string is defined %}
+      <DisabledImageFetchers>
+        {% set fetchers = opt.DisabledImageFetchers.string %}
+        {% if fetchers is string %}
+        <string>{{ fetchers }}</string>
+        {% else %}
+        {% for f in fetchers %}<string>{{ f }}</string>{% endfor %}
+        {% endif %}
+      </DisabledImageFetchers>
+      {% else %}
+      <DisabledImageFetchers />
+      {% endif %}
+      {% if opt.ImageFetcherOrder %}
+      <ImageFetcherOrder>{{ opt.ImageFetcherOrder }}</ImageFetcherOrder>
+      {% else %}
+      <ImageFetcherOrder />
+      {% endif %}
+    </MetadataOptions>
+    {% endfor %}
+  </MetadataOptions>
+  <SkipDeserializationForBasicTypes>{{ inventory.parameters.jellyfin.server.SkipDeserializationForBasicTypes }}</SkipDeserializationForBasicTypes>
+  <ServerName>{{ inventory.parameters.jellyfin.server.ServerName }}</ServerName>
+  <UICulture>{{ inventory.parameters.jellyfin.server.UICulture }}</UICulture>
+  <SaveMetadataHidden>{{ inventory.parameters.jellyfin.server.SaveMetadataHidden }}</SaveMetadataHidden>
+  {% if inventory.parameters.jellyfin.server.ContentTypes %}
+  <ContentTypes>{{ inventory.parameters.jellyfin.server.ContentTypes }}</ContentTypes>
+  {% else %}
+  <ContentTypes />
+  {% endif %}
+  <RemoteClientBitrateLimit>{{ inventory.parameters.jellyfin.server.RemoteClientBitrateLimit }}</RemoteClientBitrateLimit>
+  <EnableFolderView>{{ inventory.parameters.jellyfin.server.EnableFolderView }}</EnableFolderView>
+  <EnableGroupingMoviesIntoCollections>{{ inventory.parameters.jellyfin.server.EnableGroupingMoviesIntoCollections }}</EnableGroupingMoviesIntoCollections>
+  <EnableGroupingShowsIntoCollections>{{ inventory.parameters.jellyfin.server.EnableGroupingShowsIntoCollections }}</EnableGroupingShowsIntoCollections>
+  <DisplaySpecialsWithinSeasons>{{ inventory.parameters.jellyfin.server.DisplaySpecialsWithinSeasons }}</DisplaySpecialsWithinSeasons>
+  {% if inventory.parameters.jellyfin.server.CodecsUsed %}
+  <CodecsUsed>{{ inventory.parameters.jellyfin.server.CodecsUsed }}</CodecsUsed>
+  {% else %}
+  <CodecsUsed />
+  {% endif %}
+  <PluginRepositories>
+    {% set repo = inventory.parameters.jellyfin.server.PluginRepositories.RepositoryInfo %}
+    <RepositoryInfo>
+      <Name>{{ repo.Name }}</Name>
+      <Url>{{ repo.Url }}</Url>
+      <Enabled>{{ repo.Enabled }}</Enabled>
+    </RepositoryInfo>
+  </PluginRepositories>
+  <EnableExternalContentInSuggestions>{{ inventory.parameters.jellyfin.server.EnableExternalContentInSuggestions }}</EnableExternalContentInSuggestions>
+  <ImageExtractionTimeoutMs>{{ inventory.parameters.jellyfin.server.ImageExtractionTimeoutMs }}</ImageExtractionTimeoutMs>
+  {% if inventory.parameters.jellyfin.server.PathSubstitutions %}
+  <PathSubstitutions>{{ inventory.parameters.jellyfin.server.PathSubstitutions }}</PathSubstitutions>
+  {% else %}
+  <PathSubstitutions />
+  {% endif %}
+  <EnableSlowResponseWarning>{{ inventory.parameters.jellyfin.server.EnableSlowResponseWarning }}</EnableSlowResponseWarning>
+  <SlowResponseThresholdMs>{{ inventory.parameters.jellyfin.server.SlowResponseThresholdMs }}</SlowResponseThresholdMs>
+  <CorsHosts>
+    {% set cors = inventory.parameters.jellyfin.server.CorsHosts.string %}
+    {% if cors is string %}
+    <string>{{ cors }}</string>
+    {% else %}
+    {% for host in cors %}
+    <string>{{ host }}</string>
+    {% endfor %}
+    {% endif %}
+  </CorsHosts>
+  <ActivityLogRetentionDays>{{ inventory.parameters.jellyfin.server.ActivityLogRetentionDays }}</ActivityLogRetentionDays>
+  <LibraryScanFanoutConcurrency>{{ inventory.parameters.jellyfin.server.LibraryScanFanoutConcurrency }}</LibraryScanFanoutConcurrency>
+  <LibraryMetadataRefreshConcurrency>{{ inventory.parameters.jellyfin.server.LibraryMetadataRefreshConcurrency }}</LibraryMetadataRefreshConcurrency>
+  <AllowClientLogUpload>{{ inventory.parameters.jellyfin.server.AllowClientLogUpload }}</AllowClientLogUpload>
+  <DummyChapterDuration>{{ inventory.parameters.jellyfin.server.DummyChapterDuration }}</DummyChapterDuration>
+  <ChapterImageResolution>{{ inventory.parameters.jellyfin.server.ChapterImageResolution }}</ChapterImageResolution>
+  <ParallelImageEncodingLimit>{{ inventory.parameters.jellyfin.server.ParallelImageEncodingLimit }}</ParallelImageEncodingLimit>
+  <CastReceiverApplications>
+    {% for app in inventory.parameters.jellyfin.server.CastReceiverApplications.CastReceiverApplication %}
+    <CastReceiverApplication>
+      <Id>{{ app.Id }}</Id>
+      <Name>{{ app.Name }}</Name>
+    </CastReceiverApplication>
+    {% endfor %}
+  </CastReceiverApplications>
+  <TrickplayOptions>
+    {% set tp = inventory.parameters.jellyfin.server.TrickplayOptions %}
+    <EnableHwAcceleration>{{ tp.EnableHwAcceleration }}</EnableHwAcceleration>
+    <EnableHwEncoding>{{ tp.EnableHwEncoding }}</EnableHwEncoding>
+    <EnableKeyFrameOnlyExtraction>{{ tp.EnableKeyFrameOnlyExtraction }}</EnableKeyFrameOnlyExtraction>
+    <ScanBehavior>{{ tp.ScanBehavior }}</ScanBehavior>
+    <ProcessPriority>{{ tp.ProcessPriority }}</ProcessPriority>
+    <Interval>{{ tp.Interval }}</Interval>
+    <WidthResolutions>
+      {% set wr = tp.WidthResolutions.int %}
+      {% if wr is string %}
+      <int>{{ wr }}</int>
+      {% else %}
+      {% for r in wr %}<int>{{ r }}</int>{% endfor %}
+      {% endif %}
+    </WidthResolutions>
+    <TileWidth>{{ tp.TileWidth }}</TileWidth>
+    <TileHeight>{{ tp.TileHeight }}</TileHeight>
+    <Qscale>{{ tp.Qscale }}</Qscale>
+    <JpegQuality>{{ tp.JpegQuality }}</JpegQuality>
+    <ProcessThreads>{{ tp.ProcessThreads }}</ProcessThreads>
+  </TrickplayOptions>
+  <EnableLegacyAuthorization>{{ inventory.parameters.jellyfin.server.EnableLegacyAuthorization }}</EnableLegacyAuthorization>
+</ServerConfiguration>

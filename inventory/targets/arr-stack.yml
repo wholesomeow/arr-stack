@@ -1,0 +1,29 @@
+---
+classes:
+  - sonarr
+  - jellyfin
+
+parameters:
+  kapitan:
+    compile:
+      - input_type: jinja2
+        input_paths:
+          - templates/sonarr/config.xml.j2
+          - templates/init.sh.j2
+        output_path: sonarr/
+        output_type: plain
+
+      - input_type: jinja2
+        input_paths:
+          - templates/jellyfin/encoding.xml.j2
+          - templates/jellyfin/network.xml.j2
+          - templates/jellyfin/system.xml.j2
+          - templates/init.sh.j2
+        output_path: jellyfin/
+        output_type: plain
+
+      - input_type: jinja2
+        input_paths:
+          - templates/docker-compose.xml.j2
+        output_path: docker/
+        output_type: plain

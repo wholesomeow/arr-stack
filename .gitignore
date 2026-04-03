@@ -21,6 +21,16 @@
 .idea/
 .vscode/
 
+# --- Jellyfin ---
+jellyfin/data/
+jellyfin/log/
+jellyfin/cache/
+jellyfin/config/logging.json
+
+# --- Kapitan ---
+.kapitan
+inventory/classes/arr-secrets.yml
+compiled/
 
 # --- Secrets ---
-.buildarr/buildarr-secret.yml
+secrets/arr-secrets.yml

@@ -1,0 +1,23 @@
+###############################################
+# SONARR - TV Shows
+###############################################
+
+  sonarr:
+    container_name: {{ inventory.parameters[target].docker.container_name }}
+    image: {{ inventory.parameters[target].docker.image }}
+    ports:
+      - {{ inventory.parameters[target].docker.local_port }}:{{ inventory.parameters[target].docker.container_port }}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - {{ inventory.parameters[target].docker.local_config_path }}:/config
+      - {{ inventory.parameters[target].docker.local_data_path }}:/data
+    restart: {{ inventory.parameters.docker_common.restart }}
+    logging:
+      driver: {{ inventory.parameters.docker_common.logging.driver }}
+    environment:
+      PUID: {{ inventory.parameters.docker_common.environment.PUID }}
+      PGID: {{ inventory.parameters.docker_common.environment.PGID }}
+      TZ: {{ inventory.parameters.docker_common.environment.timezone }}
+    dns: {{ inventory.parameters.docker_common.dns }}
+    networks:
+        - arr-network

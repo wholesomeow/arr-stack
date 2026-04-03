@@ -1,0 +1,22 @@
+---
+parameters:
+  arr_common:
+    log_level: info
+    update_mechanism: Docker
+    authentication_method: Forms
+    authentication_required: Enabled
+    ssl_enabled: "False"
+    port_offset: 0 # overridden per app
+    config_path: ~/arr-stack/config
+    data_path: /mnt/e/arr-stack:/data
+  docker_common:
+    restart: unless-stopped
+    logging:
+      driver: json-file
+    environment:
+      PUID: 1000
+      PGID: 1000
+      timezone: America/Denver
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
