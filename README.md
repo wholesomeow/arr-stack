@@ -18,8 +18,8 @@ I know most people are fairly happy with just getting the thing deployed and usi
 
 ## Workflow Improvements
 
-- [ ] Use [Kapitan](https://github.com/kapicorp/kapitan) to generate a docker compose file from multiple settings files
-- [ ] Split out each docker container into it's own file for better customization and maintanence
+- [x] Use [Kapitan](https://github.com/kapicorp/kapitan) to generate a docker compose file from multiple settings files
+- [x] Split out each docker container into it's own file for better customization and maintanence
 - [ ] Add features/services description to README (potentially auto-generated?)
 - [ ] Auto-update containers when available (not using renovate)
 
