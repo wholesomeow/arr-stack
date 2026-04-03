@@ -1,0 +1,26 @@
+# --- Environmental Variables (Crucial) ---
+.env
+.env.local
+.env.*.local
+*.secret
+
+# --- Database/Config Files (Do not track live data) ---
+*.db
+*.db-shm
+*.db-wal
+/config/*.xml
+/config/*.json
+
+# --- Docker & Logs ---
+/logs
+/tmp
+*.log
+
+# --- System & IDE files ---
+.DS_Store
+.idea/
+.vscode/
+
+
+# --- Secrets ---
+.buildarr/buildarr-secret.yml

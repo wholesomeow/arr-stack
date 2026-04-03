@@ -16,6 +16,20 @@ x-common-keys: &common-keys
 
 services:
 ###############################################
+# BUILDARR - Configuration as Code
+###############################################
+  buildarr:
+    <<: *common-keys
+    container_name: buildarr
+    image: callum027/buildarr:latest
+    restart: always
+    volumes:
+      - type: bind
+        source: ./buildarr
+        target: /config
+        read_only: true
+
+###############################################
 # RADARR - Movies
 ###############################################
   radarr:
