@@ -12,5 +12,5 @@ if [ ! -f "$CONFIG_DIR/system.xml"]; then
     cp /config-init/system.xml "$CONFIG_DIR/system.xml"
 fi
 
-# Then we pass off to {{ inventory.parameters[target] }}'s real entrypoint
+# Then pass off to {{ inventory.parameters[target] }}'s actual entrypoint
 exec /{{ inventory.parameters[target] }}/{{ inventory.parameters[target] }}

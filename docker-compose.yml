@@ -125,7 +125,7 @@ services:
 # NZBGet - Downloader
 ###############################################
 
-  nxbget:
+  nzbget:
     <<: *common-keys
     container_name: nzbget
     image: ghcr.io/nzbgetcom/nzbget:latest
@@ -133,7 +133,7 @@ services:
       - 6789:6789
     volumes:
       - ~/arr-stack/config/nzbget:/config
-      - /mnt/e/arr-stack:/data
+      - /mnt/e/arr-stack:/downloads
 
 ###############################################
 # JELLYFIN - Media Server
@@ -143,10 +143,8 @@ services:
     <<: *common-keys
     container_name: jellyfin
     image: ghcr.io/hotio/jellyfin:latest
-    entrypoint: ["/bin/sh", "/config-init/init.sh"]
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./jellyfin/init.sh:/config-init/init.sh:ro
       - ~/arr-stack/config/jellyfin:/config
       - /mnt/e/arr-stack/media:/data/media:ro #read-only
     ports:

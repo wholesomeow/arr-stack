@@ -37,3 +37,4 @@ I know most people are fairly happy with just getting the thing deployed and usi
 - [ ] Implement some form of container performance monitoring/alerting
 - [ ] Validate hardlinks are working correctly
 - [ ] Find cleaning script for my usecase
+- [ ] Safely expose stack to internet
