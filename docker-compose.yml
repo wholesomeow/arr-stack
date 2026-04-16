@@ -149,6 +149,14 @@ services:
       - /mnt/e/arr-stack/media:/data/media:ro #read-only
     ports:
       - 8096:8096
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
 
 ###############################################
 # ARR Stack Dedicated Network
